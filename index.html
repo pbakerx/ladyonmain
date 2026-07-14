@@ -195,6 +195,45 @@
   }
   .song audio { width: 100%; filter: sepia(0.5) saturate(0.7) brightness(0.9); }
 
+  /* ---------- TALK TO THE HOUSE (voice agent) ---------- */
+  .song-or {
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--brass-dim);
+    margin: 1.1rem 0 0.9rem;
+  }
+  .talk-btn { cursor: pointer; font-size: 0.9rem; }
+  .talk-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--brass-dim);
+    margin-right: 0.7em;
+    vertical-align: 1px;
+    transition: background 0.3s;
+  }
+  .talk-btn.live .talk-dot {
+    background: #7ddb6e;
+    box-shadow: 0 0 10px 2px rgba(125, 219, 110, 0.6);
+    animation: talkpulse 1.6s infinite;
+  }
+  .talk-btn.speaking .talk-dot {
+    background: var(--amber);
+    box-shadow: 0 0 10px 2px var(--glow);
+  }
+  @keyframes talkpulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.35); }
+  }
+  .talk-hint {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--brass-dim);
+    margin-top: 0.7rem;
+  }
+
   /* ---------- STORY ---------- */
   .story {
     max-width: 880px;
@@ -422,9 +461,15 @@
     <div class="song deco-frame">
       <h3>&#9835; Hear Me Sing</h3>
       <p>Press play, and let the lady on Main tell it her way.</p>
-      <audio controls preload="metadata" src="lady-on-main.mp3">
+      <audio id="songAudio" controls preload="metadata" src="lady-on-main.mp3">
         Your browser does not support the audio player.
       </audio>
+      <div class="song-or" aria-hidden="true">&mdash; or &mdash;</div>
+      <button id="talkBtn" class="btn talk-btn" type="button">
+        <span id="talkDot" class="talk-dot" aria-hidden="true"></span>
+        <span id="talkLabel">Talk to the House</span>
+      </button>
+      <p id="talkHint" class="talk-hint">She answers live &mdash; microphone required.</p>
     </div>
   </div>
 </header>
@@ -532,6 +577,72 @@
   &copy; 2026 Debra Penrod &bull; <a href="https://www.debrapenrod.com" target="_blank" rel="noopener">DebraPenrod.com</a> &bull; Home is where your heart is.<br>
   <span style="font-size:0.8rem;">Stand-in photos via Wikimedia Commons &mdash; replace with listing photography before publishing.</span>
 </footer>
+
+<script type="module">
+/* ============ TALK TO THE HOUSE — ElevenLabs voice agent ============
+   Modeled on the philipbaker.us voice engine, simplified for a static page:
+   public agent + @elevenlabs/client, no server required.
+   Agent: "Lady on Main — Talk to the House". Voice/prompt/data tuning to come. */
+const AGENT_ID = 'agent_5701kxh3738fergswd4t4j88wq19';
+
+const btn = document.getElementById('talkBtn');
+const label = document.getElementById('talkLabel');
+const hint = document.getElementById('talkHint');
+const song = document.getElementById('songAudio');
+
+let conversation = null;
+let state = 'off'; // off | connecting | live
+
+function setUI(s, mode) {
+  state = s;
+  btn.classList.toggle('live', s === 'live');
+  btn.classList.toggle('speaking', s === 'live' && mode === 'speaking');
+  if (s === 'off') {
+    label.textContent = 'Talk to the House';
+    hint.textContent = 'She answers live — microphone required.';
+  } else if (s === 'connecting') {
+    label.textContent = 'Ringing the parlor…';
+    hint.textContent = 'Allow the microphone when asked.';
+  } else {
+    label.textContent = mode === 'speaking' ? 'She’s speaking — tap to hang up' : 'Listening — tap to hang up';
+    hint.textContent = 'Ask her anything — her past, her rooms, her porch.';
+  }
+}
+
+async function startTalk() {
+  setUI('connecting');
+  try {
+    if (song && !song.paused) song.pause(); // one voice at a time
+    const { Conversation } = await import('https://esm.sh/@elevenlabs/client@0.3.0');
+    conversation = await Conversation.startSession({
+      agentId: AGENT_ID,
+      connectionType: 'websocket',
+      onConnect: () => setUI('live', 'listening'),
+      onDisconnect: () => { conversation = null; setUI('off'); },
+      onModeChange: (m) => setUI('live', (m && m.mode) || 'listening'),
+      onError: (e) => { console.error('Voice error:', e); stopTalk(); },
+    });
+  } catch (e) {
+    console.error('Voice start failed:', e);
+    hint.textContent = 'Couldn’t reach her — check the microphone and try again.';
+    setUI('off');
+  }
+}
+
+async function stopTalk() {
+  try { if (conversation) await conversation.endSession(); } catch (e) { /* ignore */ }
+  conversation = null;
+  setUI('off');
+}
+
+btn.addEventListener('click', () => {
+  if (state === 'off') startTalk();
+  else stopTalk();
+});
+
+// If the visitor plays the song mid-conversation, hang up politely.
+if (song) song.addEventListener('play', () => { if (state !== 'off') stopTalk(); });
+</script>
 
 </body>
 </html>
