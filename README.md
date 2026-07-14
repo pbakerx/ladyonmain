@@ -9,6 +9,15 @@ presented by Debra Penrod (Metro Brokers of Oklahoma).
 - `lady-on-main.mp3` — the song played by the "Hear Me Sing" player
 - `vercel.json` — cache/range headers for the audio file
 
+## Voice agent ("Talk to the House")
+
+- ElevenLabs Conversational AI, public agent — no server or API key on the page.
+- Agent ID: `agent_5701kxh3738fergswd4t4j88wq19` (in `index.html`)
+- Voice: "LadyOnMain" (`JZSF7iNaGJBCdw4G7Tpn`), set on the agent server-side.
+- The agent's persona/knowledge is the site content; prompt and knowledge-base
+  files can be updated via the ElevenLabs dashboard or API without touching this repo.
+- Mic requires HTTPS — the button works on the deployed site, not from a local file.
+
 ## Deploy to Vercel
 
 **Option A — drag and drop (no tools needed):**
