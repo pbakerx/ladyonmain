@@ -619,6 +619,17 @@ async function startTalk() {
     conversation = await Conversation.startSession({
       agentId: AGENT_ID,
       connectionType: 'websocket',
+      clientTools: {
+        /* Agent hook: visitor asks her to sing → she says one line,
+           the song starts, and the call hangs up. */
+        play_song: async () => {
+          setTimeout(() => {
+            stopTalk();
+            try { song.currentTime = 0; song.play(); } catch (e) { /* ignore */ }
+          }, 3500); // let her finish her goodbye line first
+          return 'The song is starting on the page and the call will end.';
+        },
+      },
       onConnect: () => setUI('live', 'listening'),
       onDisconnect: () => { conversation = null; setUI('off'); },
       onModeChange: (m) => setUI('live', (m && m.mode) || 'listening'),
