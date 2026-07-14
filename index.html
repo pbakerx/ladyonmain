@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>If My Walls Could Talk, They'd Sing — The Georgian Lady on Main</title>
+<meta name="description" content="A 1901 Georgian-style home on Main Street. 5 bedrooms, 4,544 sq ft, wrap-around porch, and a century of stories. Presented by Debra Penrod, REALTOR®.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Speakeasy palette: dark woods, brass, candle-glow */
+    --coal: #14100c;          /* near-black */
+    --charcoal: #1e1813;      /* section bg */
+    --wood-dark: #241a11;
+    --wood: #2e2115;
+    --wood-light: #3b2b1a;
+    --brass: #c9a35c;
+    --brass-dim: #8f7340;
+    --amber: #f0b95e;
+    --glow: rgba(255, 178, 80, 0.55);
+    --champagne: #e9dcc0;     /* main text on dark */
+    --parchment: #d9c8a6;     /* dimmer text */
+    --smoke: #a4906c;         /* muted text */
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--champagne);
+    background: var(--coal);
+    line-height: 1.75;
+    font-size: 1.22rem;
+  }
+  h1, h2, h3 { font-family: 'Poiret One', cursive; font-weight: 400; }
+
+  /* Art Deco double-line frame */
+  .deco-frame {
+    border: 1px solid var(--brass-dim);
+    position: relative;
+    padding: 2rem;
+  }
+  .deco-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201, 163, 92, 0.35);
+    pointer-events: none;
+  }
+  .deco-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: var(--brass);
+    margin: 2.5rem auto;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+  }
+  .deco-divider::before, .deco-divider::after {
+    content: '';
+    height: 1px;
+    width: 90px;
+    background: linear-gradient(90deg, transparent, var(--brass-dim));
+  }
+  .deco-divider::after { background: linear-gradient(90deg, var(--brass-dim), transparent); }
+
+  /* ---------- EDISON BULBS ---------- */
+  .bulbs {
+    display: flex;
+    justify-content: center;
+    gap: clamp(28px, 7vw, 90px);
+    height: 110px;
+    border-top: 2px solid #0c0906;
+    overflow: hidden;
+  }
+  .bulb-drop { display: flex; flex-direction: column; align-items: center; }
+  .bulb-drop:nth-child(odd) { margin-top: 12px; }
+  .bulb-drop:nth-child(3n) { margin-top: 26px; }
+  .wire { width: 2px; height: 42px; background: linear-gradient(#0c0906, #241a11); }
+  .socket { width: 10px; height: 12px; background: #3a2f22; border-radius: 2px 2px 0 0; }
+  .bulb {
+    width: 20px; height: 27px;
+    border-radius: 50% 50% 46% 46%;
+    background: radial-gradient(circle at 50% 42%, #ffe9b0 0%, #f5b95c 42%, #b06f24 100%);
+    box-shadow: 0 0 18px 5px var(--glow), 0 0 46px 14px rgba(255, 160, 60, 0.22);
+    animation: flicker 6s infinite;
+  }
+  .bulb-drop:nth-child(2) .bulb { animation-delay: 1.4s; }
+  .bulb-drop:nth-child(4) .bulb { animation-delay: 3s; animation-duration: 9s; }
+  .bulb-drop:nth-child(6) .bulb { animation-delay: 2.2s; }
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.72; }
+    94% { opacity: 0.96; }
+    96% { opacity: 0.8; }
+    97% { opacity: 1; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    /* House photo ghosted into candlelit sepia dark */
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255, 170, 70, 0.13), transparent 55%),
+      linear-gradient(180deg, rgba(16, 12, 8, 0.88) 0%, rgba(22, 16, 10, 0.86) 60%, rgba(20, 16, 12, 0.97) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Campbell-Jordan_House%2C_Washington%2C_Georgia.jpg/960px-Campbell-Jordan_House%2C_Washington%2C_Georgia.jpg') center 30% / cover no-repeat;
+    background-color: var(--coal);
+    color: var(--champagne);
+    text-align: center;
+    padding: 0 1.5rem 4rem;
+  }
+  .hero-inner { padding-top: 2.5rem; }
+  .hero .eyebrow {
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-family: 'Poiret One', cursive;
+    font-size: 0.9rem;
+    color: var(--brass);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.12;
+    letter-spacing: 0.04em;
+    max-width: 950px;
+    margin: 0 auto 1.25rem;
+    color: #f5ecd7;
+    text-shadow: 0 0 30px rgba(255, 180, 90, 0.25);
+  }
+  .hero h1 em {
+    color: var(--amber);
+    font-style: normal;
+    text-shadow: 0 0 22px rgba(255, 170, 60, 0.55);
+  }
+  .hero .subhead {
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto 2.25rem;
+    color: var(--parchment);
+  }
+  .btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--brass);
+    color: var(--amber);
+    text-decoration: none;
+    padding: 0.95rem 2.4rem;
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    position: relative;
+    transition: all 0.25s;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201, 163, 92, 0.35);
+    transition: border-color 0.25s;
+  }
+  .btn:hover {
+    background: rgba(201, 163, 92, 0.12);
+    box-shadow: 0 0 24px rgba(255, 170, 60, 0.25);
+    color: #ffd98a;
+  }
+  .btn.solid {
+    background: linear-gradient(180deg, #c9a35c, #a37f42);
+    color: #1a130b;
+    border-color: #d9b876;
+  }
+  .btn.solid:hover { box-shadow: 0 0 30px rgba(255, 170, 60, 0.45); color: #14100c; }
+
+  /* ---------- SONG PLAYER ---------- */
+  .song {
+    max-width: 660px;
+    margin: 3rem auto 0;
+    background: rgba(20, 14, 8, 0.72);
+    text-align: center;
+    backdrop-filter: blur(3px);
+  }
+  .song h3 {
+    color: var(--amber);
+    font-size: 1.6rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 18px rgba(255, 170, 60, 0.4);
+  }
+  .song > p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--smoke);
+    margin-bottom: 1.2rem;
+  }
+  .song audio { width: 100%; filter: sepia(0.5) saturate(0.7) brightness(0.9); }
+
+  /* ---------- STORY ---------- */
+  .story {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 2.5rem;
+    background: var(--charcoal);
+  }
+  .story-wrap {
+    /* wood-panel backdrop behind the story */
+    background:
+      linear-gradient(rgba(24, 18, 12, 0.9), rgba(24, 18, 12, 0.9)),
+      repeating-linear-gradient(90deg, #241a11 0px, #2b1f13 90px, #241a11 180px, #2e2115 260px, #241a11 340px);
+  }
+  .story-intro { text-align: center; margin-bottom: 3rem; }
+  .story-intro h2 {
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    letter-spacing: 0.12em;
+    color: #f0e6cd;
+  }
+  .story-intro .sub {
+    color: var(--brass);
+    font-style: italic;
+    font-size: 1.15rem;
+    margin-top: 0.3rem;
+  }
+  .story p { margin-bottom: 1.7rem; color: var(--champagne); }
+  .story .lede::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6em;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.14em;
+    color: var(--amber);
+  }
+  .story-block {
+    display: flex;
+    gap: 2.25rem;
+    align-items: center;
+    margin: 2.75rem 0;
+  }
+  .story-block.reverse { flex-direction: row-reverse; }
+  .story-block img {
+    width: 280px;
+    max-width: 42%;
+    flex-shrink: 0;
+    border: 1px solid var(--brass-dim);
+    outline: 1px solid rgba(201, 163, 92, 0.25);
+    outline-offset: 5px;
+    filter: sepia(0.35) saturate(0.75) contrast(1.02) brightness(0.92);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  }
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--amber);
+    text-align: center;
+    max-width: 640px;
+    margin: 3rem auto;
+    line-height: 1.5;
+    text-shadow: 0 0 24px rgba(255, 170, 60, 0.25);
+  }
+
+  /* ---------- QUICK FACTS (wood bar top) ---------- */
+  .facts {
+    background:
+      linear-gradient(rgba(18, 12, 7, 0.55), rgba(14, 9, 5, 0.8)),
+      repeating-linear-gradient(0deg, #2a1d10 0px, #342514 26px, #2a1d10 52px, #3b2b1a 80px);
+    border-top: 3px solid #0c0805;
+    border-bottom: 3px solid #0c0805;
+    box-shadow: inset 0 12px 30px rgba(0, 0, 0, 0.6), inset 0 -12px 30px rgba(0, 0, 0, 0.6);
+    padding: 3rem 1.5rem;
+  }
+  .facts-grid {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .facts .num {
+    font-family: 'Poiret One', cursive;
+    font-size: 2.5rem;
+    color: var(--amber);
+    display: block;
+    text-shadow: 0 0 16px rgba(255, 170, 60, 0.35);
+  }
+  .facts .label {
+    font-size: 0.85rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    font-family: 'Poiret One', cursive;
+  }
+
+  .cta-mid { text-align: center; padding: 4rem 1.5rem; background: var(--charcoal); }
+  .cta-mid h3 {
+    font-size: 1.9rem;
+    letter-spacing: 0.1em;
+    color: #f0e6cd;
+    margin-bottom: 1.75rem;
+  }
+
+  /* ---------- TOUR (bottom) ---------- */
+  .tour {
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(255, 170, 70, 0.08), transparent 60%),
+      var(--coal);
+    padding: 4.5rem 1.5rem;
+    text-align: center;
+  }
+  .tour h2 {
+    color: #f0e6cd;
+    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  .tour .lead { color: var(--smoke); font-style: italic; margin-bottom: 2.25rem; }
+  .tour-frame {
+    max-width: 1100px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--brass);
+    outline: 1px solid rgba(201, 163, 92, 0.3);
+    outline-offset: 7px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 170, 60, 0.08);
+  }
+  .tour-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .tour .caption { color: var(--smoke); font-size: 1rem; margin-top: 1.4rem; font-style: italic; }
+  .tour .caption a { color: var(--brass); }
+
+  /* ---------- AGENT ---------- */
+  .agent {
+    background:
+      linear-gradient(rgba(20, 14, 8, 0.88), rgba(16, 11, 6, 0.93)),
+      repeating-linear-gradient(90deg, #241a11 0px, #2b1f13 110px, #241a11 220px, #2e2115 300px, #241a11 380px);
+    color: var(--champagne);
+    padding: 4.5rem 1.5rem;
+    border-top: 3px solid #0c0805;
+  }
+  .agent-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .agent-text .eyebrow {
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-family: 'Poiret One', cursive;
+    font-size: 0.85rem;
+    color: var(--brass);
+    margin-bottom: 0.6rem;
+  }
+  .agent-text h2 {
+    font-size: 2.4rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.4rem;
+    color: #f5ecd7;
+  }
+  .agent-text .creds { color: var(--smoke); margin-bottom: 1.4rem; font-size: 1.05rem; font-style: italic; }
+  .agent-text p { margin-bottom: 1.6rem; color: var(--parchment); }
+  .agent-contact { list-style: none; margin-bottom: 2rem; }
+  .agent-contact li { margin-bottom: 0.55rem; }
+  .agent-contact a { color: var(--amber); text-decoration: none; font-weight: 500; }
+  .agent-contact a:hover { text-decoration: underline; }
+  .agent-contact .icon { display: inline-block; width: 1.6em; color: var(--brass); }
+
+  footer {
+    background: #0b0805;
+    color: var(--smoke);
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+    font-size: 1rem;
+    border-top: 1px solid rgba(201, 163, 92, 0.25);
+  }
+  footer a { color: var(--brass); }
+  .footer-logo-card {
+    display: inline-block;
+    background: #f2e9d8;
+    padding: 14px 22px;
+    border: 1px solid var(--brass-dim);
+    margin-bottom: 1.1rem;
+  }
+  .footer-mb {
+    width: 80px;
+    display: block;
+    margin: 0 auto 1.2rem;
+    background: #f2e9d8;
+    padding: 5px;
+    border: 1px solid var(--brass-dim);
+  }
+
+  @media (max-width: 640px) {
+    .story-block, .story-block.reverse { flex-direction: column; }
+    .story-block img { max-width: 85%; width: auto; }
+    .bulbs { gap: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <!-- Old-school bulb string -->
+  <div class="bulbs" aria-hidden="true">
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+    <div class="bulb-drop"><div class="wire"></div><div class="socket"></div><div class="bulb"></div></div>
+  </div>
+
+  <div class="hero-inner">
+    <p class="eyebrow">Est. 1901 &diams; Main Street</p>
+    <h1>If My Walls Could Talk, <em>They&rsquo;d Sing</em></h1>
+    <p class="subhead">A five-bedroom Georgian lady with a speakeasy past, a wrap-around porch, and 4,544 square feet of stories &mdash; restored for her next hundred years.</p>
+    <!-- TEMPORARY LINK: replace href with the live listing URL when available -->
+    <a class="btn solid" href="https://www.zillow.com/view-imx/855c2252-8f7b-4ff6-8251-f62bd2687add?initialViewType=pano" target="_blank" rel="noopener">See the House Listing</a>
+
+    <!-- ================= THE SONG ================= -->
+    <div class="song deco-frame">
+      <h3>&#9835; Hear Me Sing</h3>
+      <p>Press play, and let the lady on Main tell it her way.</p>
+      <audio controls preload="metadata" src="lady-on-main.mp3">
+        Your browser does not support the audio player.
+      </audio>
+    </div>
+  </div>
+</header>
+
+<!-- ================= THE STORY ================= -->
+<div class="story-wrap">
+<main class="story">
+  <div class="story-intro">
+    <h2>Let the House Tell It</h2>
+    <p class="sub">In her own words.</p>
+    <div class="deco-divider">&#9670;</div>
+  </div>
+
+  <p class="lede">Welcome &mdash; I am the Georgian-style lady on Main, born in 1901. Like a well-tailored coat, I&rsquo;m adorned in perfect symmetry. I stretch 4,544 square feet across two proud stories, and I remember every footstep that ever crossed my thresholds.</p>
+
+  <div class="story-block">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Campbell-Jordan_House%2C_Washington%2C_Georgia.jpg/960px-Campbell-Jordan_House%2C_Washington%2C_Georgia.jpg" alt="Stately white Georgian-style home with columns">
+    <p>I used to be top-heavy once &mdash; I had a third floor where my speakeasy lived, tucked away like a secret from a black-and-white film. I won&rsquo;t tell you everything that happened up there, but I will tell you this: the nights were alive. Glasses clinked, music swelled, and the thrill of doing something forbidden made my rafters hum. The Love family danced in my rooms; they filled me with music and mischief and left a rhythm in my floorboards that still hums if you stand very still.</p>
+  </div>
+
+  <div class="story-block reverse">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Detail%2C_pocket_door_hardware_from_front_parlor_side%3B_view_to_southwest%3B_135mm_lens_with_electronic_flash_illumination._-_Warner_Hutton_House%2C_13495_Sousa_Lane%2C_Saratoga%2C_Santa_HABS_CAL%2C43-SARA%2C6-23.tif/lossy-page1-960px-thumbnail.tif.jpg" alt="Vintage ornate pocket door hardware, black-and-white photograph">
+    <p>I&rsquo;ve been loved and I&rsquo;ve been restored. A full house makeover polished my bones and strengthened my frame, but it did not erase my memory. I kept the important things &mdash; the crown molding that traces my ceilings like careful handwriting, the pocket doors that still giggle when you slide them open, and the transom windows above my wood doorways that keep the air moving and the house alive.</p>
+  </div>
+
+  <blockquote class="pull-quote">&ldquo;The pocket doors still giggle when you slide them open.&rdquo;</blockquote>
+
+  <div class="story-block">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/EFTA00001535_-_Bright_white_kitchen_with_sleek_cabinets_granite_island_and_modern_pendant_lights_under_vaulted_ceiling.jpg" alt="Bright modern kitchen with white cabinetry and granite countertops">
+    <p>Inside, I hold five bedrooms &mdash; huge ones, the kind that hold trunks and afternoon naps and wide, slow mornings. I have a big ground-floor office that has seen everything from serious work to secret letters, and a hobby room that has smelled of glue, paint, and possibility. My kitchen has been updated with modern cabinetry and granite countertops; she&rsquo;s practical and beautiful and ready for today&rsquo;s cooks, but she still sits where she has always sat &mdash; at the heart of me.</p>
+  </div>
+
+  <div class="story-block reverse">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Dillsboro_Road%2C_Sylva%2C_NC_%2846578825192%29.jpg/960px-Dillsboro_Road%2C_Sylva%2C_NC_%2846578825192%29.jpg" alt="White house with a broad wrap-around porch and rocking chairs">
+    <p>My wrap-around porch is one of my favorite features. She hugs me from one side to the other, offering living spaces that invite you to sit, sip, rock, read, and watch the world go by. Mornings on my porch have seen coffee steam and newspaper rustle; evenings have held porch lights and long conversations. That porch adds so much charm it practically sparkles.</p>
+  </div>
+
+  <p>I may have new windows on the outside, but inside I keep my old soul. I remember the hands that sanded my banister, the children who raced down my stairs, the lovers who whispered promises in my alcoves. I remember the practical things too &mdash; the careful repairs and thoughtful updates that let me stand another hundred years.</p>
+
+  <p>So come and see me. Pull open my pocket doors if you like; maybe you&rsquo;ll giggle too. Sit on my porch and let the breeze tell you a few of my secrets. Walk my rooms and feel the layers of time under your feet. I am polished and practical, historic and modern, and I promise to make you feel right at home.</p>
+</main>
+</div>
+
+<!-- ================= QUICK FACTS ================= -->
+<section class="facts">
+  <div class="facts-grid">
+    <div><span class="num">1901</span><span class="label">Year Built</span></div>
+    <div><span class="num">4,544</span><span class="label">Square Feet</span></div>
+    <div><span class="num">5</span><span class="label">Bedrooms</span></div>
+    <div><span class="num">2</span><span class="label">Stories</span></div>
+    <div><span class="num">&infin;</span><span class="label">Stories to Tell</span></div>
+  </div>
+</section>
+
+<!-- ================= MID CTA ================= -->
+<section class="cta-mid">
+  <h3>Ready to hear the rest of her secrets in person?</h3>
+  <!-- TEMPORARY LINK: replace href with the live listing URL when available -->
+  <a class="btn" href="https://www.zillow.com/view-imx/855c2252-8f7b-4ff6-8251-f62bd2687add?initialViewType=pano" target="_blank" rel="noopener">See the House Listing</a>
+</section>
+
+<!-- ================= 3D TOUR / MOVIE (bottom) ================= -->
+<section class="tour">
+  <h2>Walk Her Halls Yourself</h2>
+  <p class="lead">Take the interactive 3D tour &mdash; every room, at your own pace.</p>
+  <div class="tour-frame">
+    <iframe
+      src="https://www.zillow.com/view-imx/855c2252-8f7b-4ff6-8251-f62bd2687add?initialViewType=pano"
+      title="3D Home Tour"
+      allow="fullscreen; vr; xr-spatial-tracking"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  <p class="caption">Tour not loading?
+    <a href="https://www.zillow.com/view-imx/855c2252-8f7b-4ff6-8251-f62bd2687add?initialViewType=pano" target="_blank" rel="noopener">Open it full-screen on Zillow &rarr;</a></p>
+</section>
+
+<!-- ================= AGENT ================= -->
+<section class="agent" id="contact">
+  <div class="agent-inner">
+    <div class="agent-text">
+      <p class="eyebrow">Presented By</p>
+      <h2>Debra Penrod</h2>
+      <p class="creds">REALTOR&reg; since 2000 &bull; SRES&reg; Senior Real Estate Specialist</p>
+      <p>Debra believes the most important thing an agent can offer is to listen. She'll make every step of buying this home productive, pleasant, and perfectly clear &mdash; and you might even get to meet her sidekick, Ramona the Realtor dog.</p>
+      <ul class="agent-contact">
+        <li><span class="icon">&#9742;</span><a href="tel:+14056407194">(405) 640-7194</a></li>
+        <li><span class="icon">&#9993;</span><a href="mailto:penrod.debra@gmail.com">penrod.debra@gmail.com</a></li>
+        <li><span class="icon">&#8962;</span>3750 W Main Street #150, Norman, OK 73072</li>
+        <li><span class="icon">&#128279;</span><a href="https://www.debrapenrod.com" target="_blank" rel="noopener">DebraPenrod.com</a></li>
+      </ul>
+      <a class="btn" href="mailto:penrod.debra@gmail.com?subject=The%20Georgian%20Lady%20on%20Main%20%E2%80%94%20Showing%20Request">Schedule a Showing</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <!-- Dominant: Debra Penrod wordmark -->
+  <a href="https://www.debrapenrod.com" target="_blank" rel="noopener" class="footer-logo-card">
+    <img src="https://static.wixstatic.com/media/8eb170_3b08f2910a114cdd80a81b64477d91e5~mv2.png/v1/fill/w_608,h_128,al_c,q_90/debra-penrod.png" alt="Debra Penrod, Real Estate Agent" style="width:300px; display:block;">
+  </a>
+  <!-- Sub-dominant: Metro Brokers of Oklahoma -->
+  <img class="footer-mb" src="https://static.wixstatic.com/media/8eb170_21ce642527f84e4484a1a2718c4365fa~mv2.jpg/v1/fill/w_440,h_372,al_c,q_90/metro-brokers.jpg" alt="Metro Brokers of Oklahoma logo">
+  <br>
+  &copy; 2026 Debra Penrod &bull; <a href="https://www.debrapenrod.com" target="_blank" rel="noopener">DebraPenrod.com</a> &bull; Home is where your heart is.<br>
+  <span style="font-size:0.8rem;">Stand-in photos via Wikimedia Commons &mdash; replace with listing photography before publishing.</span>
+</footer>
+
+</body>
+</html>
