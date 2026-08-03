@@ -11,15 +11,15 @@
 <meta property="og:url" content="https://ladyonmain.vercel.app/">
 <meta property="og:title" content="If My Walls Could Talk, They'd Sing — Est. 1901, Purcell OK">
 <meta property="og:description" content="A five-bedroom Georgian lady with a speakeasy past and a wrap-around porch. Hear her sing, talk to her live, and walk her halls in 3D. 523 W Main St, Purcell.">
-<meta property="og:image" content="https://ladyonmain.vercel.app/og-card.jpg">
+<meta property="og:image" content="https://ladyonmain.vercel.app/images/ask-the-house_FB-1200x630.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Georgian lady on Main at 523 W Main Street, Purcell — If my walls could talk, they'd sing.">
+<meta property="og:image:alt" content="Ask the House — a speakeasy kept its stories for 125 years. Now it tells them out loud. 523 W Main St, Purcell OK.">
 <!-- Twitter/X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="If My Walls Could Talk, They'd Sing — Est. 1901, Purcell OK">
 <meta name="twitter:description" content="A five-bedroom Georgian lady with a speakeasy past and a wrap-around porch. Hear her sing, talk to her live, walk her halls in 3D.">
-<meta name="twitter:image" content="https://ladyonmain.vercel.app/og-card.jpg">
+<meta name="twitter:image" content="https://ladyonmain.vercel.app/images/ask-the-house_FB-1200x630.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -55,7 +55,7 @@
   .deco-frame {
     border: 1px solid var(--brass-dim);
     position: relative;
-    padding: 2rem;
+    padding: 1.15rem 1.5rem;
   }
   .deco-frame::before {
     content: '';
@@ -201,23 +201,23 @@
   /* ---------- SONG PLAYER ---------- */
   .song {
     max-width: 660px;
-    margin: 3rem auto 0;
+    margin: 2rem auto 0;
     background: rgba(20, 14, 8, 0.72);
     text-align: center;
     backdrop-filter: blur(3px);
   }
   .song h3 {
     color: var(--amber);
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     letter-spacing: 0.18em;
     margin-bottom: 0.4rem;
     text-shadow: 0 0 18px rgba(255, 170, 60, 0.4);
   }
   .song > p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-style: italic;
     color: var(--smoke);
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
   }
   .song audio { width: 100%; filter: sepia(0.5) saturate(0.7) brightness(0.9); }
 
@@ -228,9 +228,9 @@
     text-transform: uppercase;
     font-size: 0.75rem;
     color: var(--brass-dim);
-    margin: 1.1rem 0 0.9rem;
+    margin: 0.7rem 0 0.6rem;
   }
-  .talk-btn { cursor: pointer; font-size: 0.9rem; }
+  .talk-btn { cursor: pointer; font-size: 0.85rem; padding: 0.7rem 1.9rem; }
   .talk-dot {
     display: inline-block;
     width: 9px; height: 9px;
@@ -254,10 +254,50 @@
     50% { transform: scale(1.35); }
   }
   .talk-hint {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: var(--brass-dim);
-    margin-top: 0.7rem;
+    margin-top: 0.45rem;
+  }
+
+  /* ---------- SCROLL CUE ---------- */
+  .scroll-cue {
+    margin: 1.7rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    cursor: pointer;
+    user-select: none;
+    animation: cuefloat 3s ease-in-out infinite;
+  }
+  .scroll-cue .cue-label {
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--brass);
+    text-shadow: 0 0 14px rgba(255, 170, 60, 0.35);
+    margin-bottom: 0.5rem;
+  }
+  .scroll-cue .chev {
+    width: 26px; height: 26px;
+    border-right: 2px solid var(--amber);
+    border-bottom: 2px solid var(--amber);
+    transform: rotate(45deg);
+    margin-top: -14px;
+    filter: drop-shadow(0 0 6px rgba(255, 170, 60, 0.55));
+    animation: chevpulse 1.8s infinite;
+  }
+  .scroll-cue .chev:nth-child(3) { animation-delay: 0.3s; opacity: 0.65; }
+  .scroll-cue .chev:nth-child(4) { animation-delay: 0.6s; opacity: 0.35; }
+  @keyframes chevpulse {
+    0%, 100% { opacity: 0.25; transform: rotate(45deg) translate(0, 0); }
+    40% { opacity: 1; transform: rotate(45deg) translate(5px, 5px); }
+  }
+  @keyframes cuefloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(7px); }
   }
 
   /* ---------- STORY ---------- */
@@ -496,11 +536,19 @@
       </button>
       <p id="talkHint" class="talk-hint">She answers live &mdash; microphone required.</p>
     </div>
+
+    <!-- Scroll cue: pull visitors down into the story -->
+    <div class="scroll-cue" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})" role="button" aria-label="Scroll down to her story">
+      <div class="cue-label">Her Story Awaits</div>
+      <div class="chev"></div>
+      <div class="chev"></div>
+      <div class="chev"></div>
+    </div>
   </div>
 </header>
 
 <!-- ================= THE STORY ================= -->
-<div class="story-wrap">
+<div class="story-wrap" id="story">
 <main class="story">
   <div class="story-intro">
     <h2>Let the House Tell It</h2>
